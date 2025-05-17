@@ -9,9 +9,6 @@ namespace ClassLib
 
         // Sprint 3 – Web API + Class Library:
 
-        //[CL - 03]
-        //TODO: Implement static GetUsers() method returning IEnumerable or SelectResult.
-
         //[CL - 04]
         //TODO: Implement static Add(User user) method to add a new User to the DB.
 

@@ -8,6 +8,9 @@ namespace ClassLib.Data.Framework
 {
     internal class Settings
     {
-
+        internal static string GetConnectionString()
+        {
+            return $"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MauiAppLorenzo;Integrated Security=True;Connect Timeout=30;TrustServerCertificate=False;";
+        }
     }
 }
