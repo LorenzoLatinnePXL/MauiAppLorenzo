@@ -19,7 +19,7 @@ namespace WebApp.Controllers
         public ActionResult GetUsers() => HandleResult(Users.GetUsers());
 
         [HttpPost]
-        private ActionResult CreateUser(CreateAccountRequest request)
+        public ActionResult CreateUser(CreateAccountRequest request)
         {
             if (Users.CheckIfUsernameIsTaken(request.Username))
                 return BadRequest("Username is already taken.");
