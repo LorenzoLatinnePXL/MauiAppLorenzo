@@ -8,8 +8,7 @@
     Title="MauiAppLorenzo">
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        ContentTemplate="{DataTemplate local:LoginScreen}"
+        Route="LoginScreen" />
 
 </Shell>

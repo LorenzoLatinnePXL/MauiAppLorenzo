@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppLorenzo.LoginScreen">
+
+    <ScrollView>
+        <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
+            <Image
+            Source="pokemon_logo.png"
+            HeightRequest="185"
+            Aspect="AspectFit"
+            SemanticProperties.Description="Pokémon Logo"
+            Margin="0, 100, 0, 0"/>
+
+            <Label
+            Text="Please login to continue"
+            Style="{StaticResource SubHeadline}"
+            SemanticProperties.HeadingLevel="Level2"
+            SemanticProperties.Description="Please login to continue"
+            Margin="0, 50, 0, 0"/>
+
+            <Grid RowSpacing="25">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0">
+                    <Entry Placeholder="Username" HeightRequest="40"/>
+                </Frame>
+                <Frame Grid.Row="1">
+                    <Entry Placeholder="Password" HeightRequest="40"/>
+                </Frame>
+            </Grid>
+
+            <Button
+            x:Name="LoginButton"
+            Text="Login" 
+            SemanticProperties.Hint="Login"
+            HorizontalOptions="Fill"
+                TextColor="#3B4CCA"/>
+            <Button
+            x:Name="RegisterButton"
+            Text="Create an account" 
+            SemanticProperties.Hint="Register"
+            HorizontalOptions="Fill"
+                TextColor="#3B4CCA"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
