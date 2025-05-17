@@ -9,12 +9,6 @@ namespace ClassLib
 
         // Sprint 3 – Web API + Class Library:
 
-        //[CL-01]
-        //TODO: Create User class with at least 4 properties in Class Library.
-
-        //[CL-02]
-        //TODO: Create corresponding User table in the SQL database.
-
         //[CL - 03]
         //TODO: Implement static GetUsers() method returning IEnumerable or SelectResult.
 
