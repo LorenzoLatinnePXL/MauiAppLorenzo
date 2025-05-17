@@ -9,12 +9,6 @@ namespace ClassLib
 
         // Sprint 3 – Web API + Class Library:
 
-        //[]
-        //TODO: .
-
-        //[CL-07]
-        //TODO: Implement Select() in UserData to return full User table.
-
         //[CL - 08]
         //TODO: Implement Insert(User user) in UserData to add an User record.
 
