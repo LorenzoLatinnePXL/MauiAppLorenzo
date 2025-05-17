@@ -2,6 +2,7 @@
 using ClassLib.Data.Framework;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using WebApp.DTO;
 
 namespace WebApp.Controllers
 {
@@ -18,7 +19,21 @@ namespace WebApp.Controllers
         [HttpGet]
         public ActionResult GetUsers() => HandleResult(Users.GetUsers());
 
-        // [WebAPI - 02]
-        // TODO: Add HttpPost endpoint in UserController to insert a new User.
+        [HttpPost]
+        private ActionResult CreateUser(CreateAccountRequest request)
+        {
+            if (Users.CheckIfUsernameIsTaken(request.Username))
+                return BadRequest("Username is already taken.");
+
+            if (Users.CheckIfEmailIsTaken(request.Email))
+                return BadRequest("Email is already in use.");
+
+            if (!Users.CheckEmailFormat(request.Email))
+                return BadRequest("Invalid email format.");
+
+            Users.Add(request.Username, request.Password, request.Email);
+
+            return Ok("User has been created successfully.");
+        }
     }
 }

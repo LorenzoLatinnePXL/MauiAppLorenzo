@@ -28,5 +28,28 @@ namespace ClassLib.Business
             InsertResult result = userData.Insert(user);
             return result;
         }
+
+        public static bool CheckIfUsernameIsTaken(string username)
+        {
+            UserData userData = new UserData();
+            return userData.SelectCountUsername(username).Count > 0;
+        }
+
+        public static bool CheckIfEmailIsTaken(string email)
+        {
+            UserData userData = new UserData();
+            return userData.SelectCountEmail(email).Count > 0;
+        }
+
+        public static bool CheckEmailFormat(string email)
+        {
+            if (string.IsNullOrEmpty(email)) return false;
+
+            int atIndex = email.IndexOf('@');
+            if (atIndex <= 0 || atIndex == email.Length - 1) return false;
+
+            string domainPart = email[(atIndex + 1)..];
+            return domainPart.Contains('.') && !domainPart.Contains("..") && !domainPart.Contains(" ");
+        }
     }
 }

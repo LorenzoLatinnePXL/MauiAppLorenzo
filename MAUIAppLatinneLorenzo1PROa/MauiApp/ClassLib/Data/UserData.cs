@@ -46,5 +46,19 @@ namespace ClassLib.Data
             }
             return result;
         }
+
+        internal CountResult SelectCountUsername(string username)
+        {
+            using SqlCommand cmd = new($"SELECT COUNT(*) FROM {TableName} WHERE Username = @Username");
+            cmd.Parameters.AddWithValue("@Username", username);
+            return base.SelectCount(cmd);
+        }
+
+        internal CountResult SelectCountEmail(string email)
+        {
+            using SqlCommand cmd = new($"SELECT COUNT(*) FROM {TableName} WHERE Email = @Email");
+            cmd.Parameters.AddWithValue("@Email", email);
+            return base.SelectCount(cmd);
+        }
     }
 }

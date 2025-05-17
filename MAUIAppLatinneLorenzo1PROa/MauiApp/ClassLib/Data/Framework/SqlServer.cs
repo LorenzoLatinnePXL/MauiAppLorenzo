@@ -73,5 +73,26 @@ namespace ClassLib.Data.Framework
             }
             return result;
         }
+
+        internal CountResult SelectCount(SqlCommand cmd)
+        {
+            CountResult result = new CountResult();
+            try
+            {
+                using (connection)
+                {
+                    cmd.Connection = connection;
+                    connection.Open();
+                    result.Count = (int)cmd.ExecuteScalar();
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Succeeded = false;
+                result.AddError(ex.Message);
+            }
+            return result;
+        }
     }
 }
