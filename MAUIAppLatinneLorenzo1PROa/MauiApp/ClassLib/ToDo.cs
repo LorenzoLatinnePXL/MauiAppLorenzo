@@ -9,9 +9,6 @@ namespace ClassLib
 
         // Sprint 3 – Web API + Class Library:
 
-        //[CL-05]
-        //TODO: Reuse BaseResult, SelectResult, LocalSettings, and SqlServer from Sprint 1.
-
         //[CL-06]
         //TODO: Create UserData class inheriting from SqlServer.
 
