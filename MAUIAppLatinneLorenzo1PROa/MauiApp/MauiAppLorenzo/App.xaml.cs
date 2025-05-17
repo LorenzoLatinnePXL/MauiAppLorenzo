@@ -12,9 +12,6 @@
 
             // MAUI UI / XAML:
 
-            // [MAUI-04]
-            // TODO: Add button in UI to trigger data fetch and populate ListView.
-
             //  RestService:
 
             // [MAUI-05] 
