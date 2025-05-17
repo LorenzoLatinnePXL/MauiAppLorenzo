@@ -9,8 +9,8 @@ namespace ClassLib
 
         // Sprint 3 – Web API + Class Library:
 
-        //[CL-06]
-        //TODO: Create UserData class inheriting from SqlServer.
+        //[]
+        //TODO: .
 
         //[CL-07]
         //TODO: Implement Select() in UserData to return full User table.
