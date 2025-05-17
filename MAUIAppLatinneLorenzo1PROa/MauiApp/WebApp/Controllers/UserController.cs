@@ -10,7 +10,6 @@ namespace WebApp.Controllers
     [Route("[controller]")]
     public class UserController : ControllerBase
     {
-        // Sprint 3 – Web API + Class Library:
         private ActionResult HandleResult(SelectResult result)
         {
             return result.Succeeded ? Ok(JsonConvert.SerializeObject(result.DataTable, Formatting.Indented)) : BadRequest(result.Errors);
