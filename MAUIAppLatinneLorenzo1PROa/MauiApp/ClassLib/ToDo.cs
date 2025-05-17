@@ -9,9 +9,6 @@ namespace ClassLib
 
         // Sprint 3 – Web API + Class Library:
 
-        //[CL - 04]
-        //TODO: Implement static Add(User user) method to add a new User to the DB.
-
         //[CL-05]
         //TODO: Reuse BaseResult, SelectResult, LocalSettings, and SqlServer from Sprint 1.
 

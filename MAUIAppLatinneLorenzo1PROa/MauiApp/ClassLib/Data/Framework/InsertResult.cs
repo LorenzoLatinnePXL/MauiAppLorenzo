@@ -1,6 +1,6 @@
 ﻿namespace ClassLib.Data.Framework
 {
-    internal class InsertResult
+    public class InsertResult : BaseResult
     {
         public int NewId { get; set; }
     }
