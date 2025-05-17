@@ -2,23 +2,21 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void ContentPage_Loaded(object sender, EventArgs e)
         {
-            count++;
+            int totalPokemons = 151;
+            List<int> pokemonIds = new List<int>();
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            for (int i = 0; i < totalPokemons; i++)
+            {
+                pokemonIds.Add(i + 1);   
+            }
+            PokemonListView.ItemsSource = pokemonIds;
         }
     }
 

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiAppLorenzo.LoginScreen">
+             x:Class="MauiAppLorenzo.LoginScreen"
+             Shell.NavBarIsVisible="False">
 
     <ScrollView>
         <VerticalStackLayout
-        Padding="30,0"
         Spacing="25">
             <Image
             Source="pokemon_logo.png"
@@ -19,7 +19,9 @@
             Style="{StaticResource SubHeadline}"
             SemanticProperties.HeadingLevel="Level2"
             SemanticProperties.Description="Please login to continue"
-            Margin="0, 50, 0, 0"/>
+            Margin="0, 50, 0, 0"
+                FontFamily="pokemonSolid"
+                TextColor="#3B4CCA"/>
 
             <Grid RowSpacing="25">
                 <Grid.RowDefinitions>
@@ -27,10 +29,15 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Frame Grid.Row="0">
-                    <Entry Placeholder="Username" HeightRequest="40"/>
+                    <Entry Placeholder="Username" HeightRequest="40"
+                           FontFamily="pokemonSolid"
+                           x:Name="usernameEntry"/>
                 </Frame>
                 <Frame Grid.Row="1">
-                    <Entry Placeholder="Password" HeightRequest="40"/>
+                    <Entry Placeholder="Password" HeightRequest="40"
+                           FontFamily="pokemonSolid"
+                           IsPassword="True"
+                           x:Name="passwordEntry"/>
                 </Frame>
             </Grid>
 
@@ -39,13 +46,18 @@
             Text="Login" 
             SemanticProperties.Hint="Login"
             HorizontalOptions="Fill"
-                TextColor="#3B4CCA"/>
+                TextColor="#FFFFFF"
+                Background="{StaticResource Primary}"
+                Clicked="LoginButton_Clicked"/>
+            
             <Button
             x:Name="RegisterButton"
             Text="Create an account" 
             SemanticProperties.Hint="Register"
             HorizontalOptions="Fill"
-                TextColor="#3B4CCA"/>
+                TextColor="#FFFFFF"
+                Background="{StaticResource Primary}"
+                Clicked="RegisterButton_Clicked"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -18,7 +18,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public ActionResult GetUsers() => HandleResult(Users.GetUsers());
 
-        [HttpPost]
+        [HttpPost("Create-Account")]
         public ActionResult CreateUser(CreateAccountRequest request)
         {
             if (Users.CheckIfUsernameIsTaken(request.Username))
@@ -33,6 +33,19 @@ namespace WebApp.Controllers
             Users.Add(request.Username, request.Password, request.Email);
 
             return Ok("User has been created successfully.");
+        }
+
+        [HttpPost("Login")]
+        public ActionResult Login(LoginAccountRequest request)
+        {
+            if (Users.Login(request.Username, request.Password))
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
     }
 }

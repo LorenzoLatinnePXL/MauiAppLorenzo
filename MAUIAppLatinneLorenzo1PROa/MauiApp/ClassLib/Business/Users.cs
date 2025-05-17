@@ -18,6 +18,13 @@ namespace ClassLib.Business
             return result;
         }
 
+        public static bool Login(string username, string password)
+        {
+            UserData userData = new UserData();
+            CountResult result = userData.Login(username, password);
+            return result.Count == 1;
+        }
+
         public static InsertResult Add(string username, string password, string email)
         {
             User user = new User();

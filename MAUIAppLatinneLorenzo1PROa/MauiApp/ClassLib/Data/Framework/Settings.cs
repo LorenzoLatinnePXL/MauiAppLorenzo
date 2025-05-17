@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace ClassLib.Data.Framework
 {
-    internal class Settings
+    internal static class Settings
     {
         internal static string GetConnectionString()
         {
-            return $"Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=MauiAppLorenzo;Integrated Security=True;Connect Timeout=30;TrustServerCertificate=False;";
+            return $"Data Source=Lorenzo-PC\\SQLEXPRESS;Initial Catalog=LorenzoMAUI;Integrated Security=True;Connect Timeout=30;Trust Server Certificate=True;";
         }
     }
 }

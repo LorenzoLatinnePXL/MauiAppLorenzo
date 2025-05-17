@@ -23,7 +23,7 @@ namespace ClassLib.Data
             return base.Select(TableName);
         }
 
-        internal InsertResult Insert(User user)
+        public InsertResult Insert(User user)
         {
             InsertResult result;
             try
@@ -47,17 +47,26 @@ namespace ClassLib.Data
             return result;
         }
 
-        internal CountResult SelectCountUsername(string username)
+        public CountResult SelectCountUsername(string username)
         {
             using SqlCommand cmd = new($"SELECT COUNT(*) FROM {TableName} WHERE Username = @Username");
             cmd.Parameters.AddWithValue("@Username", username);
             return base.SelectCount(cmd);
         }
 
-        internal CountResult SelectCountEmail(string email)
+        public CountResult SelectCountEmail(string email)
         {
             using SqlCommand cmd = new($"SELECT COUNT(*) FROM {TableName} WHERE Email = @Email");
             cmd.Parameters.AddWithValue("@Email", email);
+            return base.SelectCount(cmd);
+        }
+
+        internal CountResult Login(string username, string password)
+        {
+            using SqlCommand cmd =
+                new($"SELECT COUNT(*) FROM {TableName} WHERE Username = @Username AND Password = @Password");
+            cmd.Parameters.AddWithValue("@Username", username);
+            cmd.Parameters.AddWithValue("@Password", password);
             return base.SelectCount(cmd);
         }
     }
