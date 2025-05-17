@@ -1,35 +1,37 @@
 ﻿using ClassLib.Business.Entities;
+using MauiAppLorenzo.Services;
 using System.Collections.ObjectModel;
 
 namespace MauiAppLorenzo
 {
     public partial class MainPage : ContentPage
     {
-        private readonly HttpClient _httpclient;
-        public ObservableCollection<Pokemon> PokemonIds { get; set; } = new ObservableCollection<Pokemon>();
+        public ObservableCollection<Pokemon> Pokemons { get; set; } = new ObservableCollection<Pokemon>();
 
         public MainPage()
         {
-            _httpclient = new HttpClient();
-            _httpclient.BaseAddress = new Uri("https://pokeapi.co/api/v2/pokemon/");
+
             InitializeComponent();
             BindingContext = this;
         }
 
-        private void fetchPokemons_Clicked(object sender, EventArgs e)
+        private async void fetchPokemons_Clicked(object sender, EventArgs e)
         {
-            PokemonIds.Clear();
+            Pokemons.Clear();
 
-            for (int i = 1; i <= 151; i++)
+            var pokemons = await RestService.GetAllPokemonsAsync();
+
+            foreach (var pokemon in pokemons)
             {
-                Pokemon pokemon = new Pokemon()
-                {
-                    Id = i,
-                    Name = i.ToString(),
-                    Image = i.ToString(),
-                };
+                Pokemons.Add(pokemon);
+            }
+        }
 
-                PokemonIds.Add(pokemon);
+        private void OnPokemonTapped(object sender, EventArgs e)
+        {
+            if (sender is VisualElement visualElement && visualElement.BindingContext is Pokemon tappedPokemon)
+            {
+                
             }
         }
     }

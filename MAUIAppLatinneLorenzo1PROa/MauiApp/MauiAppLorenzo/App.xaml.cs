@@ -7,34 +7,6 @@
             InitializeComponent();
 
             MainPage = new AppShell();
-
-            // Sprint 4 – MAUI Android App:
-
-            // MAUI UI / XAML:
-
-            //  RestService:
-
-            // [MAUI-05] 
-            //TODO: Create RestService class using HttpClient to call Web API.
-
-            // [MAUI-06] 
-            //TODO: Set up REST_URL constant with dev tunnel URL.
-
-            // [MAUI-07] 
-            //TODO: Use HttpClient.GetAsync() in RestService to retrieve data (async).
-
-            // JSON Handling
-
-            // [MAUI-08]
-            // TODO: Use JsonConvert.SerializeObject in API Controller and DeserializeObject<T> in RestService.
-
-            // Bonus Features (Optional)
-
-            // [MAUI-09]
-            // TODO: Display image or video per record in ListView using DataTemplate.
-
-            // [MAUI - 10]
-            // TODO: Add audio playback when clicking a record.
         }
     }
 }

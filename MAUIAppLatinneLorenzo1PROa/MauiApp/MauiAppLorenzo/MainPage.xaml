@@ -18,7 +18,7 @@
             <ListView 
         Grid.Row="1" 
         x:Name="PokemonListView"
-        ItemsSource="{Binding PokemonIds}"
+        ItemsSource="{Binding Pokemons}"
         HasUnevenRows="True"
         SeparatorColor="Transparent"
         Margin="20,5"
@@ -32,22 +32,22 @@
                     Padding="10">
 
                                 <Border.GestureRecognizers>
-                                    <TapGestureRecognizer/>
+                                    <TapGestureRecognizer Tapped="OnPokemonTapped" CommandParameter="{Binding}" />
                                 </Border.GestureRecognizers>
 
                                 <HorizontalStackLayout Spacing="15" Padding="20">
-                                    <Label Text="{Binding Image}" FontSize="14" FontFamily="pokemonSolid" TextColor="#FFFFFF"/>
+                                    <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
                                     <VerticalStackLayout Spacing="4">
-                                        <Label Text="{Binding Id}" 
-                                               FontSize="14" 
-                                               FontFamily="pokemonSolid" 
-                                               TextColor="#FFFFFF"/>
-                                        <!--<Image Source="{Binding PokemonImage}" WidthRequest="90" HeightRequest="100" Aspect="AspectFill" />-->
+                                        <Label Text="{Binding Id, StringFormat='# \{0\}'}" 
+                                                FontSize="14" 
+                                                FontFamily="pokemonSolid" 
+                                                TextColor="#FFFFFF"/>
                                         <Label Text="{Binding Name}" 
-                                               FontSize="30" 
+                                               FontSize="24" 
                                                FontAttributes="None" 
                                                TextColor="#FFD700"
-                                               FontFamily="pokemonSolid"/>
+                                               FontFamily="pokemonSolid"
+                                               CharacterSpacing="2"/>
                                     </VerticalStackLayout>
                                 </HorizontalStackLayout>
                             </Border>

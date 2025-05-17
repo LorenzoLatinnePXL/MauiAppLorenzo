@@ -8,8 +8,8 @@ namespace ClassLib.Business.Entities
 {
     public class Pokemon
     {
-        public int Id { get; set; }
         public string Name { get; set; }
-        public string Image { get; set; }
+        public string Id { get; set; }
+        public string Image => $"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/{Id}.png";
     }
 }
