@@ -10,9 +10,6 @@ namespace ClassLib.Business
 {
     public static class Users
     {
-        //[CL - 03]
-        //TODO: Implement static GetUsers() method returning IEnumerable or SelectResult.
-
         public static SelectResult GetUsers()
         {
             UserData userData = new UserData();
