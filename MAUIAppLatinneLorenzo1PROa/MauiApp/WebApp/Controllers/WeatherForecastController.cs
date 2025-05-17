@@ -29,13 +29,5 @@ namespace WebApp.Controllers
             })
             .ToArray();
         }
-
-        // Sprint 3 – Web API + Class Library:
-
-        // [WebAPI-01]
-        // TODO: Add HttpGet endpoint in UserController to return all Users.
-
-        // [WebAPI - 02]
-        // TODO: Add HttpPost endpoint in UserController to insert a new User.
     }
 }
