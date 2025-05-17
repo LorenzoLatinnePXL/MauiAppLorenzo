@@ -46,7 +46,7 @@
             Text="Login" 
             SemanticProperties.Hint="Login"
             HorizontalOptions="Fill"
-                TextColor="#FFFFFF"
+                TextColor="#3B4CCA"
                 Background="{StaticResource Primary}"
                 Clicked="LoginButton_Clicked"/>
             
@@ -56,7 +56,7 @@
             SemanticProperties.Hint="Register"
             HorizontalOptions="Fill"
                 TextColor="#FFFFFF"
-                Background="{StaticResource Primary}"
+                Background="{StaticResource Secondary}"
                 Clicked="RegisterButton_Clicked"/>
         </VerticalStackLayout>
     </ScrollView>

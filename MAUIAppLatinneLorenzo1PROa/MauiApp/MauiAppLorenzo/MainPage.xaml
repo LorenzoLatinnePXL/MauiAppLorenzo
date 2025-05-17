@@ -2,17 +2,61 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppLorenzo.MainPage"
-             Shell.NavBarIsVisible="False"
-             Loaded="ContentPage_Loaded">
+             Shell.NavBarIsVisible="False">
 
     <ScrollView>
         <Grid RowSpacing="25">
             <Grid.RowDefinitions>
-                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Text="Pokemons:"/>
-            <ListView Grid.Row="1" x:Name="PokemonListView"/>
+            <ListView 
+        Grid.Row="1" 
+        x:Name="PokemonListView"
+        ItemsSource="{Binding PokemonIds}"
+        HasUnevenRows="True"
+        SeparatorColor="Transparent"
+        Margin="20,5"
+        BackgroundColor="Transparent">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Border BackgroundColor="#3B4CCA"
+                    StrokeShape="RoundRectangle 20"
+                    Margin="10"
+                    Padding="10">
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer/>
+                                </Border.GestureRecognizers>
+
+                                <HorizontalStackLayout Spacing="15" Padding="20">
+                                    <Label Text="PokemonImg" FontSize="14" FontFamily="pokemonSolid" TextColor="#FFFFFF"/>
+                                    <VerticalStackLayout Spacing="4">
+                                        <Label Text="{Binding .}" 
+                                               FontSize="14" 
+                                               FontFamily="pokemonSolid" 
+                                               TextColor="#FFFFFF"/>
+                                        <!--<Image Source="{Binding PokemonImage}" WidthRequest="90" HeightRequest="100" Aspect="AspectFill" />-->
+                                        <Label Text="PokemonName" 
+                                               FontSize="30" 
+                                               FontAttributes="None" 
+                                               TextColor="#FFD700"
+                                               FontFamily="pokemonSolid"/>
+                                    </VerticalStackLayout>
+                                </HorizontalStackLayout>
+                            </Border>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button 
+                Grid.Row="2" 
+                Text="Render pokemons"
+                x:Name="fetchPokemons" 
+                Clicked="fetchPokemons_Clicked"/>
         </Grid>
     </ScrollView>
 

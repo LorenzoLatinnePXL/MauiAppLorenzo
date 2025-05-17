@@ -12,9 +12,6 @@
 
             // MAUI UI / XAML:
 
-            // [MAUI - 01]
-            // TODO: Add ListView to display User records in XAML.
-
             // [MAUI - 02]
             // TODO: Use ListView.ItemTemplate and DataTemplate for dynamic record layout.
 
