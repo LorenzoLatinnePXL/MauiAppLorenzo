@@ -12,12 +12,6 @@
 
             // MAUI UI / XAML:
 
-            // [MAUI - 02]
-            // TODO: Use ListView.ItemTemplate and DataTemplate for dynamic record layout.
-
-            // [MAUI - 03]
-            // TODO: Bind Artist model properties to XAML using data binding.
-
             // [MAUI-04]
             // TODO: Add button in UI to trigger data fetch and populate ListView.
 

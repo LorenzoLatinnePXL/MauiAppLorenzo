@@ -11,7 +11,10 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" Text="Pokemons:"/>
+            <Image Grid.Row="0" 
+                   Source="pokemon_logo.png"
+                   HeightRequest="80"
+                   />
             <ListView 
         Grid.Row="1" 
         x:Name="PokemonListView"
@@ -33,14 +36,14 @@
                                 </Border.GestureRecognizers>
 
                                 <HorizontalStackLayout Spacing="15" Padding="20">
-                                    <Label Text="PokemonImg" FontSize="14" FontFamily="pokemonSolid" TextColor="#FFFFFF"/>
+                                    <Label Text="{Binding Image}" FontSize="14" FontFamily="pokemonSolid" TextColor="#FFFFFF"/>
                                     <VerticalStackLayout Spacing="4">
-                                        <Label Text="{Binding .}" 
+                                        <Label Text="{Binding Id}" 
                                                FontSize="14" 
                                                FontFamily="pokemonSolid" 
                                                TextColor="#FFFFFF"/>
                                         <!--<Image Source="{Binding PokemonImage}" WidthRequest="90" HeightRequest="100" Aspect="AspectFill" />-->
-                                        <Label Text="PokemonName" 
+                                        <Label Text="{Binding Name}" 
                                                FontSize="30" 
                                                FontAttributes="None" 
                                                TextColor="#FFD700"

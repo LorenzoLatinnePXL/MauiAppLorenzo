@@ -1,11 +1,12 @@
-﻿using System.Collections.ObjectModel;
+﻿using ClassLib.Business.Entities;
+using System.Collections.ObjectModel;
 
 namespace MauiAppLorenzo
 {
     public partial class MainPage : ContentPage
     {
         private readonly HttpClient _httpclient;
-        public ObservableCollection<int> PokemonIds { get; set; } = new ObservableCollection<int>();
+        public ObservableCollection<Pokemon> PokemonIds { get; set; } = new ObservableCollection<Pokemon>();
 
         public MainPage()
         {
@@ -21,7 +22,14 @@ namespace MauiAppLorenzo
 
             for (int i = 1; i <= 151; i++)
             {
-                PokemonIds.Add(i);
+                Pokemon pokemon = new Pokemon()
+                {
+                    Id = i,
+                    Name = i.ToString(),
+                    Image = i.ToString(),
+                };
+
+                PokemonIds.Add(pokemon);
             }
         }
     }
