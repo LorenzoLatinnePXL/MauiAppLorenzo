@@ -3,10 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppLorenzo.RegisterPage"
              Title="RegisterPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout Spacing="25" Padding="20" VerticalOptions="Center">
+
+            <Label Text="Create your account"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="#3B4CCA"
+                   FontFamily="pokemonSolid"/>
+
+            <Entry x:Name="usernameEntry"
+                   Placeholder="Username"
+                   FontFamily="pokemonSolid"
+                   HeightRequest="40"/>
+
+            <Entry x:Name="emailEntry"
+                   Placeholder="Email"
+                   Keyboard="Email"
+                   FontFamily="pokemonSolid"
+                   HeightRequest="40"/>
+
+            <Entry x:Name="passwordEntry"
+                   Placeholder="Password"
+                   IsPassword="True"
+                   FontFamily="pokemonSolid"
+                   HeightRequest="40"/>
+
+            <Entry x:Name="confirmPasswordEntry"
+                   Placeholder="Confirm Password"
+                   IsPassword="True"
+                   FontFamily="pokemonSolid"
+                   HeightRequest="40"/>
+
+            <ActivityIndicator x:Name="loadingIndicator"
+                               IsVisible="False"
+                               IsRunning="False"
+                               Color="#3B4CCA"
+                               HorizontalOptions="Center"
+                               WidthRequest="40"
+                               HeightRequest="40"/>
+
+            <Button Text="Register"
+                    x:Name="RegisterButton"
+                    Background="{StaticResource Primary}"
+                    TextColor="#3B4CCA"
+                    Clicked="RegisterButton_Clicked"/>
+
+            <Button Text="Back to Login"
+                    Background="{StaticResource Secondary}"
+                    TextColor="White"
+                    Clicked="BackToLoginButton_Clicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

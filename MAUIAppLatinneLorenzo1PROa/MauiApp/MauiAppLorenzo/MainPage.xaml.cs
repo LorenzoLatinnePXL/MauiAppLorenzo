@@ -17,13 +17,30 @@ namespace MauiAppLorenzo
 
         private async void fetchPokemons_Clicked(object sender, EventArgs e)
         {
-            Pokemons.Clear();
+            fetchPokemons.IsEnabled = false;
+            loadingIndicator.IsVisible = true;
+            loadingIndicator.IsRunning = true;
 
-            var pokemons = await RestService.GetAllPokemonsAsync();
-
-            foreach (var pokemon in pokemons)
+            try
             {
-                Pokemons.Add(pokemon);
+                Pokemons.Clear();
+
+                var pokemons = await RestService.GetAllPokemonsAsync();
+
+                foreach (var pokemon in pokemons)
+                {
+                    Pokemons.Add(pokemon);
+                }
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Failed to fetch pokemons: {ex.Message}", "OK");
+            }
+            finally
+            {
+                loadingIndicator.IsRunning = false;
+                loadingIndicator.IsVisible = false;
+                fetchPokemons.IsEnabled = true;
             }
         }
 
@@ -31,9 +48,17 @@ namespace MauiAppLorenzo
         {
             if (sender is VisualElement visualElement && visualElement.BindingContext is Pokemon tappedPokemon)
             {
-                
+
+            }
+        }
+
+        private async void LogoutButton_Clicked(object sender, EventArgs e)
+        {
+            bool confirm = await DisplayAlert("Logout", "Are you sure you want to log out?", "Yes", "No");
+            if (confirm)
+            {
+                await Shell.Current.GoToAsync("//LoginScreen");
             }
         }
     }
-
 }

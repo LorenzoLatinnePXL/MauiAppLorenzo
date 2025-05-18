@@ -4,63 +4,96 @@
              x:Class="MauiAppLorenzo.MainPage"
              Shell.NavBarIsVisible="False">
 
-    <ScrollView>
-        <Grid RowSpacing="25">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" 
-                   Source="pokemon_logo.png"
-                   HeightRequest="80"
-                   />
-            <ListView 
-        Grid.Row="1" 
-        x:Name="PokemonListView"
-        ItemsSource="{Binding Pokemons}"
-        HasUnevenRows="True"
-        SeparatorColor="Transparent"
-        Margin="20,5"
-        BackgroundColor="Transparent">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Border BackgroundColor="#3B4CCA"
-                    StrokeShape="RoundRectangle 20"
-                    Margin="10"
-                    Padding="10">
+    <Grid>
 
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnPokemonTapped" CommandParameter="{Binding}" />
-                                </Border.GestureRecognizers>
+        <ScrollView>
+            <Grid RowSpacing="25">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                                <HorizontalStackLayout Spacing="15" Padding="20">
-                                    <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
-                                    <VerticalStackLayout Spacing="4">
-                                        <Label Text="{Binding Id, StringFormat='# \{0\}'}" 
-                                                FontSize="14" 
-                                                FontFamily="pokemonSolid" 
-                                                TextColor="#FFFFFF"/>
-                                        <Label Text="{Binding Name}" 
-                                               FontSize="24" 
-                                               FontAttributes="None" 
-                                               TextColor="#FFD700"
-                                               FontFamily="pokemonSolid"
-                                               CharacterSpacing="2"/>
-                                    </VerticalStackLayout>
-                                </HorizontalStackLayout>
-                            </Border>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <Button 
-                Grid.Row="2" 
-                Text="Render pokemons"
-                x:Name="fetchPokemons" 
-                Clicked="fetchPokemons_Clicked"/>
-        </Grid>
-    </ScrollView>
+                <Grid Grid.Row="0" Padding="10" ColumnSpacing="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
 
+                    <Image Source="pokemon_logo.png"
+                           HeightRequest="80"
+                           HorizontalOptions="Start"
+                           VerticalOptions="Center"
+                           Grid.Column="0" />
+
+                    <Button Text="Logout"
+                            x:Name="logoutButton"
+                            Clicked="LogoutButton_Clicked"
+                            BackgroundColor="Transparent"
+                            TextColor="{StaticResource Primary}}"
+                            Background="#3B4CCA"
+                            FontAttributes="Bold"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center"
+                            Grid.Column="1" />
+                </Grid>
+
+                <ListView 
+                    Grid.Row="1" 
+                    x:Name="PokemonListView"
+                    ItemsSource="{Binding Pokemons}"
+                    HasUnevenRows="True"
+                    SeparatorColor="Transparent"
+                    Margin="20,5"
+                    BackgroundColor="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Border BackgroundColor="#3B4CCA"
+                                        StrokeShape="RoundRectangle 20"
+                                        Margin="10"
+                                        Padding="10">
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="OnPokemonTapped" CommandParameter="{Binding}" />
+                                    </Border.GestureRecognizers>
+
+                                    <HorizontalStackLayout Spacing="15" Padding="20">
+                                        <Image Source="{Binding Image}" WidthRequest="100" HeightRequest="100" Aspect="AspectFit"/>
+                                        <VerticalStackLayout Spacing="4">
+                                            <Label Text="{Binding Id, StringFormat='# \{0\}'}" 
+                                                   FontSize="14" 
+                                                   FontFamily="pokemonSolid" 
+                                                   TextColor="#FFFFFF"/>
+                                            <Label Text="{Binding Name}" 
+                                                   FontSize="24" 
+                                                   TextColor="#FFD700"
+                                                   FontFamily="pokemonSolid"
+                                                   CharacterSpacing="2"/>
+                                        </VerticalStackLayout>
+                                    </HorizontalStackLayout>
+                                </Border>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Button 
+                    Grid.Row="2" 
+                    Text="Render pokemons"
+                    x:Name="fetchPokemons" 
+                    Clicked="fetchPokemons_Clicked"/>
+            </Grid>
+        </ScrollView>
+
+        <ActivityIndicator x:Name="loadingIndicator"
+                           IsRunning="False"
+                           IsVisible="False"
+                           BackgroundColor="#80000000"
+                           Color="White"
+                           WidthRequest="50"
+                           HeightRequest="50"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center" />
+    </Grid>
 </ContentPage>

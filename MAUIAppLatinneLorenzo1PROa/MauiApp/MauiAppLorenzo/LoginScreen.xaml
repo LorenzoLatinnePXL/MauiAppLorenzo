@@ -6,20 +6,24 @@
 
     <ScrollView>
         <VerticalStackLayout
-        Spacing="25">
+            Spacing="25"
+            Padding="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center">
+
             <Image
-            Source="pokemon_logo.png"
-            HeightRequest="185"
-            Aspect="AspectFit"
-            SemanticProperties.Description="Pokémon Logo"
-            Margin="0, 100, 0, 0"/>
+                Source="pokemon_logo.png"
+                HeightRequest="185"
+                Aspect="AspectFit"
+                SemanticProperties.Description="Pokémon Logo"
+                Margin="0, 100, 0, 0"/>
 
             <Label
-            Text="Please login to continue"
-            Style="{StaticResource SubHeadline}"
-            SemanticProperties.HeadingLevel="Level2"
-            SemanticProperties.Description="Please login to continue"
-            Margin="0, 50, 0, 0"
+                Text="Please login to continue"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Please login to continue"
+                Margin="0, 50, 0, 0"
                 FontFamily="pokemonSolid"
                 TextColor="#3B4CCA"/>
 
@@ -28,33 +32,46 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+
                 <Frame Grid.Row="0">
-                    <Entry Placeholder="Username" HeightRequest="40"
+                    <Entry Placeholder="Username"
+                           HeightRequest="40"
                            FontFamily="pokemonSolid"
                            x:Name="usernameEntry"/>
                 </Frame>
+
                 <Frame Grid.Row="1">
-                    <Entry Placeholder="Password" HeightRequest="40"
+                    <Entry Placeholder="Password"
+                           HeightRequest="40"
                            FontFamily="pokemonSolid"
                            IsPassword="True"
                            x:Name="passwordEntry"/>
                 </Frame>
             </Grid>
 
+            <ActivityIndicator x:Name="loadingIndicator"
+                               IsVisible="False"
+                               IsRunning="False"
+                               Color="#3B4CCA"
+                               HeightRequest="30"
+                               WidthRequest="30"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"/>
+
             <Button
-            x:Name="LoginButton"
-            Text="Login" 
-            SemanticProperties.Hint="Login"
-            HorizontalOptions="Fill"
+                x:Name="loginButton"
+                Text="Login" 
+                SemanticProperties.Hint="Login"
+                HorizontalOptions="Fill"
                 TextColor="#3B4CCA"
                 Background="{StaticResource Primary}"
-                Clicked="LoginButton_Clicked"/>
-            
+                Clicked="loginButton_Clicked"/>
+
             <Button
-            x:Name="RegisterButton"
-            Text="Create an account" 
-            SemanticProperties.Hint="Register"
-            HorizontalOptions="Fill"
+                x:Name="registerButton"
+                Text="Create an account" 
+                SemanticProperties.Hint="Register"
+                HorizontalOptions="Fill"
                 TextColor="#FFFFFF"
                 Background="{StaticResource Secondary}"
                 Clicked="RegisterButton_Clicked"/>
