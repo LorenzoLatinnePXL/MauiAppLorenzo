@@ -1,4 +1,5 @@
-﻿using ClassLib.Business.Entities;
+﻿using Azure;
+using ClassLib.Business.Entities;
 using MauiAppLorenzo.Models;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,33 @@ namespace MauiAppLorenzo.Services
     public class RestService
     {
         private static readonly HttpClient _httpclient = new HttpClient();
+        private const string REST_URL = "https://j1qm04fb-7109.euw.devtunnels.ms/";
 
         public RestService()
         {
 
+        }
+
+        public static async Task<bool> Login(string username, string password)
+        {
+            LoginRequest request = new LoginRequest
+            {
+                Username = username,
+                Password = password
+            };
+
+            string json = JsonSerializer.Serialize(request);
+            HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
+
+            try
+            {
+                HttpResponseMessage response = await _httpclient.PostAsync(REST_URL + "User/Login", content);
+                return response.IsSuccessStatusCode;
+            }
+            catch (Exception ex)
+            {
+                throw new HttpRequestException("Could not login.", ex);
+            }
         }
 
         public static async Task<List<Pokemon>> GetAllPokemonsAsync()
@@ -29,12 +53,12 @@ namespace MauiAppLorenzo.Services
                 {
                     string json = await response.Content.ReadAsStringAsync();
 
-                    var result = JsonSerializer.Deserialize<PokemonListResponse>(json, new JsonSerializerOptions
+                    PokemonListResponse result = JsonSerializer.Deserialize<PokemonListResponse>(json, new JsonSerializerOptions
                     {
                         PropertyNameCaseInsensitive = true
                     });
 
-                    var mapped = result?.Results.Select(p => new Pokemon
+                    List<Pokemon> mapped = result.Results.Select(p => new Pokemon
                     {
                         Name = p.Name,
                         Id = ExtractIdFromUrl(p.Url)
